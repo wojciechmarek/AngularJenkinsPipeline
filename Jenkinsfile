@@ -1,23 +1,12 @@
 pipeline {
-  agent any
-  stages {
-    stage('Install') {
-      steps { echo 'npm install' }
+    agent {
+        docker { image 'node:14-alpine' }
     }
-
-    stage('Test') {
-      parallel {
-        stage('Static code analysis') {
-            steps { echo 'npm run-script lint' }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
         }
-        stage('Unit tests') {
-            steps { echo 'npm run-script test' }
-        }
-      }
     }
-
-    stage('Build') {
-      steps { echo 'npm run-script build' }
-    }
-  }
 }
