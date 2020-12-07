@@ -2,22 +2,22 @@ pipeline {
   agent any
   stages {
     stage('Install') {
-      steps { sh 'npm install' }
+      steps { echo 'npm install' }
     }
 
     stage('Test') {
       parallel {
         stage('Static code analysis') {
-            steps { sh 'npm run-script lint' }
+            steps { echo 'npm run-script lint' }
         }
         stage('Unit tests') {
-            steps { sh 'npm run-script test' }
+            steps { echo 'npm run-script test' }
         }
       }
     }
 
     stage('Build') {
-      steps { sh 'npm run-script build' }
+      steps { echo 'npm run-script build' }
     }
   }
 }
