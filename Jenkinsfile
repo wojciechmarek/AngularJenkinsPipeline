@@ -1,10 +1,11 @@
 pipeline {
     agent {
-        docker { image 'node:14-alpine' }
+        docker { image 'node' }
     }
     stages {
         stage('Build App') {
             steps {
+                sh 'npm install -g npm@latest'
                 sh 'npm install -g @angular/cli'
                 sh 'ng build --prod'
             }
