@@ -3,9 +3,15 @@ pipeline {
         docker { image 'node:14-alpine' }
     }
     stages {
-        stage('Test') {
+        stage('Build App') {
             steps {
-                sh 'node --version'
+                sh 'ng build --prod'
+            }
+        }
+
+        stage('Build Container') {
+            steps {
+                sh 'docker build -t av-app-image .'
             }
         }
     }
