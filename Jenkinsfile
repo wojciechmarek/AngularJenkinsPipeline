@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Build App') {
             steps {
+                sh 'npm install -g @angular/cli'
                 sh 'ng build --prod'
             }
         }
