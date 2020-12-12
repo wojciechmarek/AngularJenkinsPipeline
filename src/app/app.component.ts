@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ContainerAngular';
+
+  /**
+   *
+   */
+  constructor() {
+    this.title = null;
+    alert(this.title.concat("asdasd"));
+
+    
+  }
+
+  public metoda(): boolean {
+    return true;
+  }
 }
